@@ -25,6 +25,14 @@ public class Main {
 
         Duration difference = Duration.between(expectedCheckOut, exit);
         long overtimeHours = difference.toHours();
-        long overtimeMinutes = difference.toMinutes();
+        long overtimeMinutes = difference.toMinutesPart();
+
+        // Displaying the formatted results
+        System.out.println("\nClock-in time: " + entry.format(formatter));
+        System.out.println("Expected check-out: " + expectedCheckOut.format(formatter));
+        System.out.println("Real check-out: " + exit.format(formatter));
+
+        System.out.println("\nHours Balance: " + (overtimeHours >= 0 || overtimeMinutes >= 0 ? "+" : "-")
+            + Math.abs(overtimeHours) + "h " + Math.abs(overtimeMinutes) + "min");
     }
 }
